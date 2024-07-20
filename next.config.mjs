@@ -1,19 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack(config) {
-    // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) =>
+    
+    const fileLoaderRule = config.module.rules.find((rule) =>                 // Encuentra la regla existente que maneja las importaciones de SVG
       rule.test?.test?.(".svg")
     );
 
-    config.module.rules.push(
-      // Reapply the existing rule, but only for svg imports ending in ?url
+    config.module.rules.push(                                                 
+                                                                              // Vuelve a aplicar la regla existente, pero solo para importaciones de SVG que terminan en ?url
       {
         ...fileLoaderRule,
         test: /\.svg$/i,
         resourceQuery: /url/, // *.svg?url
       },
-      // Convert all other *.svg imports to React components
+                                                                              // Convierte todas las demás importaciones de *.svg en componentes React
       {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
@@ -22,13 +22,12 @@ const nextConfig = {
       }
     );
 
-    // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    fileLoaderRule.exclude = /\.svg$/i;
+    fileLoaderRule.exclude = /\.svg$/i;                                       // Modifica la regla del cargador de archivos para ignorar *.svg, ya que ahora lo manejamos de otra manera.
 
     return config;
   },
 
-  // ...other config
+  // Esta configuración permite importar SVG de dos maneras: como URLs (si terminan en ?url) y como componentes React (para todas las demás importaciones de SVG).
 };
 
 export default nextConfig;
