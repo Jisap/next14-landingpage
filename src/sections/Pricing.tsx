@@ -1,4 +1,5 @@
 import CheckIcon from '@/assets/check.svg'
+import { twMerge } from 'tailwind-merge'
 
 const pricingTiers = [
   {
@@ -65,10 +66,16 @@ export const Pricing = () => {
         <div>
           {pricingTiers.map(({title, monthlyPrice, buttonText, popular, inverse, features}) => (
   
-            <div className='p-10 rounded-3xl shadow-[0_7px_14px_#EAEAEA] border border-[#F1F1F1]'>
+            <div className={twMerge('p-10 rounded-3xl shadow-[0_7px_14px_#EAEAEA] border border-[#F1F1F1]',
+              inverse === true && 'border-black bg-black text-white'
+            )}>
               <div className='flex justify-between'>
-                <h3 className='text-lg font-bold text-black/50'>{title}</h3>
-                {popular && (
+                <h3 className={twMerge('text-lg font-bold text-black/50',
+                  inverse === true && 'text-white/60'
+                )}>
+                  {title}
+                </h3>
+                {popular === true && (
                   <div className='inline-flex text-sm px-4 py-1.5 rounded-xl border border-white/20'>
                     <span className='bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] text-transparent bg-clip-text font-medium'>
                       Popular
@@ -80,7 +87,9 @@ export const Pricing = () => {
                 <span className='text-4xl font-bold tracking-tighter leading-none'>${monthlyPrice}</span>
                 <span className='tracking-tight font-bold text-black/50'>/month</span>
               </div>
-              <button className='btn btn-primary w-full mt-[30px]'>{buttonText}</button>
+              <button className={twMerge('btn btn-primary w-full mt-[30px]',
+                inverse === true && 'bg-white text-black'
+              )}>{buttonText}</button>
               <ul className='flex flex-col gap-5 mt-8'>
                 {features.map((feature, index) => (
                   <li
