@@ -1,3 +1,5 @@
+import CheckIcon from '@/assets/check.svg'
+
 const pricingTiers = [
   {
     title: "Free",
@@ -61,9 +63,24 @@ export const Pricing = () => {
           Free forever. Upgrade for unlimited tasks, better security, and exclusive features.
         </p>
         <div>
-          <div>
-            <h3></h3>
-          </div>
+          {pricingTiers.map(({title, monthlyPrice, buttonText, popular, inverse, features}) => (
+            <div className='p-10 rounded-3xl shadow-[0_7px_14px_#EAEAEA] border border-[#F1F1F1]'>
+              <h3 className='text-lg font-bold text-black/50'>{title}</h3>
+              <div className='flex items-baseline gap-1'>
+                <span className='text-4xl font-bold tracking-tighter leading-none'>${monthlyPrice}</span>
+                <span className='tracking-tight font-bold text-black/50'>/month</span>
+              </div>
+              <button>{buttonText}</button>
+              <ul>
+                {features.map((feature, index) => (
+                  <li key={index}>
+                    <CheckIcon className="h-6 w-6"/>
+                    <span></span>{feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>
