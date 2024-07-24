@@ -87,7 +87,7 @@ export const Testimonials = () => {
           {firstColumn.map(({text, imageSrc, name, username}) => (
             <div className="card">
               <div>{text}</div>
-              <div>
+              <div className="flex items-center gap-2 mt-5">
                 <Image 
                   src={imageSrc}
                   alt={name}
@@ -95,6 +95,10 @@ export const Testimonials = () => {
                   height={40}
                   className="h-10 w-10 rounde-full"
                 />
+                <div className="flex flex-col">
+                  <div>{name}</div>
+                  <div>{username}</div>
+                </div>
               </div>
             </div>
           ))}
