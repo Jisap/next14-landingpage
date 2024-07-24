@@ -7,6 +7,7 @@ import avatar6 from "@/assets/avatar-6.png";
 import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -65,9 +66,13 @@ const testimonials = [
   },
 ];
 
+const firstColumn = testimonials.slice(0, 3)
+const secondColumn = testimonials.slice(3, 6)
+const thirdColumn = testimonials.slice(6, 9)
+
 export const Testimonials = () => {
   return (
-    <section>
+    <section className="bg-white">
       <div className="container">
         <div className="flex justify-center">
           <div className="tag">Testimonials</div>
@@ -78,6 +83,22 @@ export const Testimonials = () => {
         <p className="section-description mt-5">
           From intuitive design to powerful features, our app has become an essential tool for users around the world.
         </p>
+        <div>
+          {firstColumn.map(({text, imageSrc, name, username}) => (
+            <div className="card">
+              <div>{text}</div>
+              <div>
+                <Image 
+                  src={imageSrc}
+                  alt={name}
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 rounde-full"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
