@@ -71,10 +71,10 @@ const firstColumn = testimonials.slice(0, 3)
 const secondColumn = testimonials.slice(3, 6)
 const thirdColumn = testimonials.slice(6, 9)
 
-const TextimonialsColumns = (props: {className?: string; testimonials: typeof testimonials}) => (
+const TextimonialsColumns = (props: { className?: string; testimonials: typeof testimonials }) => (
   <div className={twMerge(
     "flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]",
-     props.className
+    props.className
   )}>
     {props.testimonials.map(({ text, imageSrc, name, username }) => (
       <div className="card">
@@ -101,18 +101,21 @@ export const Testimonials = () => {
   return (
     <section className="bg-white">
       <div className="container">
-        <div className="flex justify-center">
-          <div className="tag">Testimonials</div>
+        <div className="section-heading">
+          <div className="flex justify-center">
+            <div className="tag">Testimonials</div>
+          </div>
+          <h2 className="section-title mt-5">
+            What our users say
+          </h2>
+          <p className="section-description mt-5">
+            From intuitive design to powerful features, our app has become an essential tool for users around the world.
+          </p>
         </div>
-        <h2 className="section-title mt-5">
-          What our users say
-        </h2>
-        <p className="section-description mt-5">
-          From intuitive design to powerful features, our app has become an essential tool for users around the world.
-        </p>
         <div className="flex justify-center gap-6">
           <TextimonialsColumns testimonials={firstColumn} />
-          <TextimonialsColumns testimonials={secondColumn} className="hidden md:flex"/>
+          <TextimonialsColumns testimonials={secondColumn} className="hidden md:flex" />
+          <TextimonialsColumns testimonials={thirdColumn} className="hidden lg:flex" />
         </div>
       </div>
     </section>
