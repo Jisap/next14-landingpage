@@ -18,7 +18,7 @@ export const Footer = () => {
             className='relative'
           />
         </div>
-        <nav>
+        <nav className='flex flex-col md:flex-row md:justify-center gap-6 mt-6'>
           <a href="#">About</a>
           <a href="#">Features</a>
           <a href="#">Customers</a>
@@ -26,14 +26,14 @@ export const Footer = () => {
           <a href="#">Help</a>
           <a href="#">Careers</a>
         </nav>
-        <div>
+        <div className='flex justify-center gap-6 mt-6'>
           <SocialX />
           <SocialInsta />
           <SocialLinkeding />
           <SocialPin />
           <SocialYoutube />
         </div>
-        <p>
+        <p className='mt-6'>
           &copy; 2024 Your Company, Inc. All rights reserved.
         </p>
       </div>
