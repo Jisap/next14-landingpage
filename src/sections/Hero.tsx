@@ -13,12 +13,12 @@ export const Hero = () => {
 
   const heroRef = useRef(null)
 
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress } = useScroll({ // Se utiliza para rastrear el progreso(scroll) del desplazamiento de la sección hero. Retorna un valor entre 0 y 1
     target: heroRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"]    // Define el rango de desplazamiento, desde que el inicio de la sección entra en la vista hasta que sale completamente.
   });
 
-  const translateY = useTransform(scrollYProgress, [0,1], [150, -150])
+  const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]); // Se usa para convertir el progreso del desplazamiento (0 a 1) en valores de traslación vertical (-150px a 150px).
 
  
 
@@ -35,7 +35,7 @@ export const Hero = () => {
               Version 2.0 is here
             </div>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text mt-6">
-              Pathwaay to productivity
+              Pathway to productivity
             </h1>
             <p className="text-xl text-[#010D3E] tracking-tight mt-6">
               Celebrate the joy of accomplishment with an app designed to track your progress,
